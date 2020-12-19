@@ -2,4 +2,12 @@
 	import "./global.pcss";
 </script>
 
-<slot />
+<main>
+	<slot />
+</main>
+
+<style>
+	:root {
+		@apply bg-gray-200;
+	}
+</style>
