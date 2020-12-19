@@ -1,4 +1,6 @@
 <script>
+    import Task from "$components/Task.svelte";
+
     export let title;
     export let tasks = [];
 
@@ -15,9 +17,7 @@
     </div>
     <div class="px-4 flex flex-col space-y-3">
         {#each tasks as task}
-            <div class="bg-white rounded shadow p-2">
-                <div class="font-bold">{task.title}</div>
-            </div>
+            <Task {task} />
         {/each}
     </div>
 </div>
