@@ -12,6 +12,15 @@
 		"@sveltejs/snowpack-config": "next",
 		"svelte": "^3.29.0",
 		"sass": "^1.0.0",
-		"svelte-preprocess": "^4.0.0"
+		"svelte-preprocess": "^4.6.1",
+		"@snowpack/plugin-build-script": "^2.0.11",
+		"@snowpack/plugin-svelte": "^3.4.0",
+		"autoprefixer": "^10.1.0",
+		"cssnano": "^4.1.10",
+		"postcss": "^8.2.1",
+		"postcss-load-config": "^3.0.0",
+		"postcss-cli": "^8.3.1",
+		"snowpack": "next",
+		"tailwindcss": "^2.0.2"
 	}
 }
