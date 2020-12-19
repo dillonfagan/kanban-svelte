@@ -18,7 +18,7 @@
     }
 </script>
 
-<div class="bg-white rounded shadow p-2">
+<div class="bg-white rounded shadow-sm hover:shadow-md p-2">
     <input
         contenteditable={editingTitle}
         bind:this={titleInput}
