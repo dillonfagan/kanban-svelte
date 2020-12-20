@@ -4,9 +4,23 @@
     export let title;
     export let tasks = [];
 
+    let addingTask = false;
+    let newTaskTitle;
+
     function addTask() {
-        let task = { title: "New task" };
+        newTaskTitle = "";
+        addingTask = true;
+    }
+
+    function add() {
+        addingTask = false;
+
+        let task = { title: newTaskTitle };
         tasks = [task, ...tasks];
+    }
+
+    function cancel() {
+        addingTask = false;
     }
 </script>
 
@@ -16,6 +30,15 @@
         <button on:click={addTask}>+</button>
     </div>
     <div class="px-4 flex flex-col space-y-3">
+        {#if addingTask}
+            <div>
+                <input bind:value={newTaskTitle} placeholder="Give it a title..." />
+                <div>
+                    <button on:click={add}>Add</button>
+                    <button on:click={cancel}>Cancel</button>
+                </div>
+            </div>
+        {/if}
         {#each tasks as task}
             <Task {task} />
         {/each}
