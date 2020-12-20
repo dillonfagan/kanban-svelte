@@ -1,5 +1,3 @@
-import { writable } from "svelte/store";
-
 const defaultProject = {
     title: "My First Project",
     columns: [
@@ -18,19 +16,14 @@ const defaultProject = {
     ]
 }
 
-const store = writable();
-
 function load() {
+    localStorage.clear();
     const projectsData = JSON.parse(localStorage.getItem('projects'));
     const projects = projectsData || [defaultProject];
-    store.set(projects);
-}
-
-function get() {
-    return store;
+    console.log(`Loading Projects:\n${JSON.stringify(projects)}`);
+    return projects;
 }
 
 export default {
-    load,
-    get
+    load
 }

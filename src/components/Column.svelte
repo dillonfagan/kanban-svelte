@@ -1,8 +1,12 @@
 <script>
+    import { createEventDispatcher } from "svelte";
     import Task from "$components/Task.svelte";
 
+    export let id;
     export let title;
     export let tasks = [];
+
+    const dispath = createEventDispatcher();
 
     let addingTask = false;
     let newTaskTitle;
@@ -19,6 +23,14 @@
         tasks = [task, ...tasks];
 
         console.log(`Added Task: ${task.title}`);
+
+        const detail = {
+            column: id,
+            tasks: tasks
+        }
+
+        console.log(detail);
+        dispath('update', detail);
     }
 
     function cancel() {
