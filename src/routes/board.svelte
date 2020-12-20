@@ -3,11 +3,13 @@
     import Projects from "./_data/projects";
     import Column from "$components/Column.svelte";
 
+    let projects;
     let columns = [];
 
     onMount(() => {
-        const projects = Projects.get();
-        columns = projects[0].columns;
+        Projects.load();
+        projects = Projects.get();
+        columns = $projects[0].columns;
     });
 </script>
 
