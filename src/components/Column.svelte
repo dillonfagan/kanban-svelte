@@ -20,17 +20,14 @@
         addingTask = false;
 
         let task = { title: newTaskTitle };
-        tasks = [task, ...tasks];
-
-        console.log(`Added Task: ${task.title}`);
 
         const detail = {
             column: id,
-            tasks: tasks
+            task: task
         }
 
         console.log(detail);
-        dispath('update', detail);
+        dispath('taskAdded', detail);
     }
 
     function cancel() {

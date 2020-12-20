@@ -13,15 +13,15 @@
     });
 
     function columnUpdated(event) {
-        const { id, tasks } = event.detail;
+        const { id, task } = event.detail;
         console.log(`Column: ${id}`);
-        columns[0].tasks = tasks;
+        columns[0].tasks = [task, ...columns[0].tasks];
         console.log(columns);
     }
 </script>
 
 <div class="h-screen flex flex-row">
     {#each columns as column, i}
-        <Column id={i} title={column.title} tasks={column.tasks} on:update={columnUpdated} />
+        <Column id={i} title={column.title} tasks={column.tasks} on:taskAdded={columnUpdated} />
     {/each}
 </div>
