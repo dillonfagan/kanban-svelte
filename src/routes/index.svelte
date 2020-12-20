@@ -19,14 +19,12 @@
     function addTask(event) {
         const { column, task } = event.detail;
         columns[column].tasks = [task, ...columns[column].tasks];
-        console.log(columns);
 
         save();
     }
 
     let selectedTask;
     function selectTask(event) {
-        console.log(`Selected Task: ${event.detail.title}`);
         selectedTask = event.detail;
     }
 </script>
