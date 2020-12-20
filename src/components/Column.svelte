@@ -51,7 +51,7 @@
             </div>
         {/if}
         {#each tasks as task}
-            <Task {task} />
+            <Task on:taskSelected {task} />
         {/each}
     </div>
 </div>

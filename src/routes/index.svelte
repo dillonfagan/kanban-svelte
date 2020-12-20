@@ -22,10 +22,26 @@
 
         save();
     }
+
+    let selectedTask;
+    function selectTask(event) {
+        console.log(`Selected Task: ${event.detail.title}`);
+        selectedTask = event.detail;
+    }
 </script>
 
 <div class="h-screen flex flex-row">
     {#each columns as column, i}
-        <Column id={i} title={column.title} tasks={column.tasks} on:taskAdded={addTask} />
+        <Column 
+            id={i} 
+            title={column.title}
+            tasks={column.tasks}
+            on:taskSelected={selectTask}
+            on:taskAdded={addTask} />
     {/each}
 </div>
+{#if selectedTask}
+    <aside class="h-screen w-96 flex flex-col fixed top-0 right-0 bg-gray-400">
+        <div>{selectedTask.title}</div>
+    </aside>
+{/if}
