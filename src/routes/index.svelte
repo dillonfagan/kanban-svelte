@@ -23,9 +23,18 @@
         save();
     }
 
-    let selectedTask;
+    let selected;
     function selectTask(event) {
-        selectedTask = event.detail;
+        selected = event.detail;
+    }
+
+    function updateTask(event) {
+        const updatedTask = event.detail;
+        const index = columns[selected.column].tasks.findIndex(t => t.title === selected.task.title);
+        columns[selected.column].tasks[index] = updatedTask;
+        selected = null;
+
+        save();
     }
 </script>
 
@@ -39,6 +48,6 @@
             on:taskAdded={addTask} />
     {/each}
 </div>
-{#if selectedTask}
-    <TaskTray task={selectedTask} />
+{#if selected}
+    <TaskTray on:taskUpdated={updateTask} task={selected.task} />
 {/if}

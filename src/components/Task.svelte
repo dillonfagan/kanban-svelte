@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
 
+    export let column;
     export let task;
 
     const dispatch = createEventDispatcher();
@@ -9,7 +10,10 @@
 
     function select() {
         selected = true;
-        dispatch('taskSelected', task);
+        dispatch('taskSelected', {
+            column: column,
+            task: task
+        });
     }
 </script>
 
