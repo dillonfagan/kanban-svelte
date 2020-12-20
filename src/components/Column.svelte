@@ -17,6 +17,8 @@
 
         let task = { title: newTaskTitle };
         tasks = [task, ...tasks];
+
+        console.log(`Added Task: ${task.title}`);
     }
 
     function cancel() {

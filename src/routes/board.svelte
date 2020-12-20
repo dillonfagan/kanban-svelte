@@ -1,30 +1,14 @@
 <script>
+    import { onMount } from "svelte";
+    import Projects from "./_data/projects";
     import Column from "$components/Column.svelte";
 
-    let columns = [
-        {
-            title: "To do",
-            tasks: [
-                {
-                    title: "Empty the trash"
-                },
-                {
-                    title: "Cook dinner"
-                },
-                {
-                    title: "Clean the dishes"
-                }
-            ]
-        },
-        {
-            title: "Doing",
-            tasks: []
-        },
-        {
-            title: "Done",
-            tasks: []
-        }
-    ]
+    let columns = [];
+
+    onMount(() => {
+        const projects = Projects.get();
+        columns = projects[0].columns;
+    });
 </script>
 
 <div class="h-screen flex flex-row">
