@@ -31,11 +31,14 @@
     </div>
     <div class="px-4 flex flex-col space-y-3">
         {#if addingTask}
-            <div>
-                <input bind:value={newTaskTitle} placeholder="Give it a title..." />
-                <div>
-                    <button on:click={add}>Add</button>
-                    <button on:click={cancel}>Cancel</button>
+            <div class="flex flex-col space-y-3">
+                <input 
+                    bind:value={newTaskTitle} 
+                    class="rounded p-2"
+                    placeholder="Give it a title..." />
+                <div class="flex flex-row space-x-3">
+                    <button class="addingTask bg-green-500" on:click={add}>Add</button>
+                    <button class="addingTask bg-yellow-300" on:click={cancel}>Cancel</button>
                 </div>
             </div>
         {/if}
@@ -44,3 +47,11 @@
         {/each}
     </div>
 </div>
+
+<style>
+    button.addingTask {
+        @apply flex-1;
+        @apply rounded;
+        @apply p-2;
+    }
+</style>
