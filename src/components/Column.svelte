@@ -19,15 +19,12 @@
     function add() {
         addingTask = false;
 
-        let task = { title: newTaskTitle };
+        const task = { title: newTaskTitle };
 
-        const detail = {
+        dispath('taskAdded', {
             column: id,
             task: task
-        }
-
-        console.log(detail);
-        dispath('taskAdded', detail);
+        });
     }
 
     function cancel() {
