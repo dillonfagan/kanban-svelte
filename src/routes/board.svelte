@@ -12,7 +12,7 @@
         columns = project.columns;
     });
 
-    function columnUpdated(event) {
+    function addTask(event) {
         const { id, task } = event.detail;
         console.log(`Column: ${id}`);
         columns[0].tasks = [task, ...columns[0].tasks];
@@ -22,6 +22,6 @@
 
 <div class="h-screen flex flex-row">
     {#each columns as column, i}
-        <Column id={i} title={column.title} tasks={column.tasks} on:taskAdded={columnUpdated} />
+        <Column id={i} title={column.title} tasks={column.tasks} on:taskAdded={addTask} />
     {/each}
 </div>
