@@ -13,9 +13,8 @@
     });
 
     function addTask(event) {
-        const { id, task } = event.detail;
-        console.log(`Column: ${id}`);
-        columns[0].tasks = [task, ...columns[0].tasks];
+        const { column, task } = event.detail;
+        columns[column].tasks = [task, ...columns[column].tasks];
         console.log(columns);
     }
 </script>
