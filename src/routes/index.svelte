@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import Projects from "./_data/projects";
     import Column from "$components/Column.svelte";
+    import TaskTray from "../components/TaskTray.svelte";
 
     let projects;
     let columns = [];
@@ -41,7 +42,5 @@
     {/each}
 </div>
 {#if selectedTask}
-    <aside class="h-screen w-96 flex flex-col fixed top-0 right-0 bg-gray-400">
-        <div>{selectedTask.title}</div>
-    </aside>
+    <TaskTray task={selectedTask} />
 {/if}
