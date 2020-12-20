@@ -3,19 +3,24 @@
     import Projects from "./_data/projects";
     import Column from "$components/Column.svelte";
 
-    let project;
+    let projects;
     let columns = [];
 
     onMount(() => {
-        const projects = Projects.load();
-        project = projects[0];
-        columns = project.columns;
+        projects = Projects.load();
+        columns = projects[0].columns;
     });
+
+    function save() {
+        Projects.dump(projects);
+    }
 
     function addTask(event) {
         const { column, task } = event.detail;
         columns[column].tasks = [task, ...columns[column].tasks];
         console.log(columns);
+
+        save();
     }
 </script>
 
