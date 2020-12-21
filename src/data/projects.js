@@ -1,3 +1,5 @@
+import FileSaver from "file-saver";
+
 const defaultProject = {
     title: "My First Project",
     columns: [
@@ -30,7 +32,15 @@ function dump(projectsData) {
     localStorage.setItem('projects', stringified);
 }
 
+function download() {
+    const data = localStorage.getItem('projects');
+    var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
+
+    FileSaver.saveAs(blob, "kanban.json");
+}
+
 export default {
     load,
-    dump
+    dump,
+    download
 }

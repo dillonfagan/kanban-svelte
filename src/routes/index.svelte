@@ -48,6 +48,7 @@
 
     function download() {
         alert("Are you sure you want to download your data?");
+        Projects.download();
     }
 </script>
 
