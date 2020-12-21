@@ -8,6 +8,9 @@
 
     let taskTitle = task.title;
 
+    let truncatedTitle;
+    $: truncatedTitle = taskTitle.length > 33 ? taskTitle.substring(0, 33) + "..." : taskTitle;
+
     const dispatch = createEventDispatcher();
 
     function save() {
@@ -38,7 +41,7 @@
 </script>
 
 <aside class="h-screen w-96 p-4 flex flex-col space-y-4 fixed top-0 right-0 bg-gray-100 shadow-lg z-50">
-    <div class="font-bold text-xl">{taskTitle || "Task"}</div>
+    <div class="font-bold text-xl">{truncatedTitle || "Task"}</div>
     <div class="flex flex-col space-y-1">
         <label for="title" class="text-sm">Title</label>
         <input
