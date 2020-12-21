@@ -1,13 +1,13 @@
 <script>
     import { createEventDispatcher } from "svelte";
 
-    export let selected;
+    export let selection;
     export let columns;
 
     const dispatch = createEventDispatcher();
 
     function save() {
-        dispatch('taskUpdated', selected);
+        dispatch('taskUpdated', selection);
     }
 
     function close() {
@@ -16,17 +16,17 @@
 </script>
 
 <aside class="h-screen w-96 p-4 flex flex-col space-y-4 fixed top-0 right-0 bg-gray-400">
-    <div class="font-bold text-xl">{selected.task.title}</div>
+    <div class="font-bold text-xl">{selection.task.title}</div>
     <div class="flex flex-col space-y-1">
         <label for="title" class="text-sm">Title</label>
         <input
             id="title"
-            bind:value={selected.task.title} 
+            bind:value={selection.task.title} 
             class="p-2 rounded" />
     </div>
     <div class="flex flex-col space-y-1">
         <label for="status" class="text-sm">Status</label>
-        <select id="status" bind:value={selected.column} class="p-2 rounded">
+        <select id="status" bind:value={selection.column} class="p-2 rounded">
             {#each columns as column, i}
                 <option value={i}>{column.title}</option>
             {/each}

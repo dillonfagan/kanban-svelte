@@ -23,9 +23,9 @@
         save();
     }
 
-    let selected;
+    let selection;
     function selectTask(event) {
-        selected = event.detail;
+        selection = event.detail;
     }
 
     function updateTask(event) {
@@ -33,12 +33,12 @@
         const index = columns[column].tasks.findIndex(t => t.title === task.title);
         columns[column].tasks[index] = task;
         
-        selected = null;
+        selection = null;
         save();
     }
 
     function closeTray(event) {
-        selected = null;
+        selection = null;
     }
 </script>
 
@@ -52,10 +52,10 @@
             on:taskAdded={addTask} />
     {/each}
 </div>
-{#if selected}
+{#if selection}
     <TaskTray
         on:trayClosed={closeTray}
         on:taskUpdated={updateTask}
-        {selected}
+        {selection}
         {columns} />
 {/if}
