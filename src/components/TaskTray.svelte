@@ -8,6 +8,10 @@
     function save() {
         dispatch('taskUpdated', task);
     }
+
+    function close() {
+        dispatch('trayClosed', task);
+    }
 </script>
 
 <aside class="h-screen w-96 p-4 flex flex-col fixed top-0 right-0 bg-gray-400">
@@ -21,7 +25,7 @@
     </div>
     <div class="flex flex-row space-x-3">
         <button on:click={save} class="bg-black text-white">Save</button>
-        <button class="bg-yellow-300">Cancel</button>
+        <button on:click={close} class="bg-yellow-300">Cancel</button>
     </div>
 </aside>
 

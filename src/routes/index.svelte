@@ -36,6 +36,10 @@
 
         save();
     }
+
+    function closeTray(event) {
+        selected = null;
+    }
 </script>
 
 <div class="h-screen flex flex-row">
@@ -49,5 +53,8 @@
     {/each}
 </div>
 {#if selected}
-    <TaskTray on:taskUpdated={updateTask} task={selected.task} />
+    <TaskTray
+        on:trayClosed={closeTray}
+        on:taskUpdated={updateTask}
+        task={selected.task} />
 {/if}
