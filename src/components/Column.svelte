@@ -8,7 +8,7 @@
     export let title;
     export let tasks = [];
 
-    const dispath = createEventDispatcher();
+    const dispatch = createEventDispatcher();
 
     let addingTask = false;
     let newTaskTitle;
@@ -26,7 +26,7 @@
             title: newTaskTitle
         };
 
-        dispath('taskAdded', {
+        dispatch('taskAdded', {
             column: id,
             task: task
         });
