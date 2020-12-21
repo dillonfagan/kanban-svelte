@@ -1,8 +1,8 @@
 <script>
     import { onMount } from "svelte";
-    import Projects from "./_data/projects";
+    import Projects from "$data/projects";
     import Column from "$components/Column.svelte";
-    import TaskTray from "../components/TaskTray.svelte";
+    import TaskTray from "$components/TaskTray.svelte";
 
     let projects;
     let columns = [];
