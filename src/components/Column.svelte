@@ -2,6 +2,7 @@
     import { createEventDispatcher } from "svelte";
     import { v4 as uuid } from "uuid";
     import Task from "$components/Task.svelte";
+    import Button from "$components/Button.svelte";
 
     export let id;
     export let title;
@@ -49,8 +50,8 @@
                     class="rounded p-2"
                     placeholder="Give it a title..." />
                 <div class="flex flex-row space-x-3">
-                    <button class="addingTask bg-green-500" on:click={add}>Add</button>
-                    <button class="addingTask bg-yellow-300" on:click={cancel}>Cancel</button>
+                    <Button class="flex-1 bg-green-500 text-black" on:click={add}>Add</Button>
+                    <Button class="flex-1 bg-yellow-300 text-black" on:click={cancel}>Cancel</Button>
                 </div>
             </div>
         {/if}
@@ -59,11 +60,3 @@
         {/each}
     </div>
 </div>
-
-<style>
-    button.addingTask {
-        @apply flex-1;
-        @apply rounded;
-        @apply p-2;
-    }
-</style>
