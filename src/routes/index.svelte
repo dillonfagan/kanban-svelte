@@ -3,7 +3,7 @@
     import Projects from "./_data/projects";
     import Column from "$components/Column.svelte";
     import TaskTray from "../components/TaskTray.svelte";
-    
+
     let projects;
     let columns = [];
 
@@ -30,7 +30,7 @@
 
     function updateTask(event) {
         const { column, task } = event.detail;
-        const index = columns[column].tasks.findIndex(t => t.title === task.title);
+        const index = columns[column].tasks.findIndex(t => t._id === task._id);
         columns[column].tasks[index] = task;
         
         selection = null;
