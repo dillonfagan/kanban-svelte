@@ -45,9 +45,15 @@
         const { column, id } = event.detail;
         columns[column].tasks = columns[column].tasks.filter(t => t._id !== id);
     }
+
+    function download() {
+        alert("Are you sure you want to download your data?");
+    }
 </script>
 
-<button class="h-16 w-16 rounded-full shadow-md fixed bottom-8 right-8 z-10 bg-white box-border border-2 border-black">...</button>
+<button on:click={download} class="h-16 w-16 rounded-full shadow-md fixed bottom-8 right-8 z-10 bg-white box-border border-2 border-black">
+    ...
+</button>
 <div class="h-screen flex flex-row">
     {#each columns as column, id}
         <Column 
