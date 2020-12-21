@@ -24,13 +24,8 @@
     }
 
     let selection;
-    function selectTask(event) {
-        selection = event.detail;
-    }
-
-    function deselectTask(event) {
-        selection = null;
-    }
+    const selectTask = (event) => selection = event.detail;
+    const deselectTask = (event) => selection = null;
 
     function updateTask(event) {
         const { column, task } = event.detail;
