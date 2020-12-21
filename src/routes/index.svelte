@@ -47,8 +47,8 @@
     }
 
     function download() {
-        alert("Are you sure you want to download your data?");
-        Projects.download();
+        if (confirm("Are you sure you want to download your data?"))
+            Projects.download();
     }
 </script>
 
