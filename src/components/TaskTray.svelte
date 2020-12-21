@@ -1,27 +1,36 @@
 <script>
     import { createEventDispatcher } from "svelte";
 
-    export let task;
+    export let selected;
+    export let columns;
 
     const dispatch = createEventDispatcher();
 
     function save() {
-        dispatch('taskUpdated', task);
+        dispatch('taskUpdated', selected);
     }
 
     function close() {
-        dispatch('trayClosed', task);
+        dispatch('trayClosed', null);
     }
 </script>
 
-<aside class="h-screen w-96 p-4 flex flex-col fixed top-0 right-0 bg-gray-400">
-    <div class="font-bold text-xl">{task.title}</div>
-    <div class="py-4 flex flex-col space-y-1">
+<aside class="h-screen w-96 p-4 flex flex-col space-y-4 fixed top-0 right-0 bg-gray-400">
+    <div class="font-bold text-xl">{selected.task.title}</div>
+    <div class="flex flex-col space-y-1">
         <label for="title" class="text-sm">Title</label>
         <input
             id="title"
-            bind:value={task.title} 
+            bind:value={selected.task.title} 
             class="p-2 rounded" />
+    </div>
+    <div class="flex flex-col space-y-1">
+        <label for="status" class="text-sm">Status</label>
+        <select id="status" bind:value={selected.column} class="p-2 rounded">
+            {#each columns as column, i}
+                <option value={i}>{column.title}</option>
+            {/each}
+        </select>
     </div>
     <div class="flex flex-row space-x-3">
         <button on:click={save} class="bg-black text-white">Save</button>

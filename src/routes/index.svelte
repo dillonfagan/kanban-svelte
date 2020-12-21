@@ -29,11 +29,11 @@
     }
 
     function updateTask(event) {
-        const updatedTask = event.detail;
-        const index = columns[selected.column].tasks.findIndex(t => t.title === selected.task.title);
-        columns[selected.column].tasks[index] = updatedTask;
+        const { column, task } = event.detail;
+        const index = columns[column].tasks.findIndex(t => t.title === task.title);
+        columns[column].tasks[index] = task;
+        
         selected = null;
-
         save();
     }
 
@@ -56,5 +56,6 @@
     <TaskTray
         on:trayClosed={closeTray}
         on:taskUpdated={updateTask}
-        task={selected.task} />
+        {selected}
+        {columns} />
 {/if}
