@@ -12,15 +12,14 @@
         columns = projects[0].columns;
     });
 
-    function save() {
+    function save(event, callback) {
+        callback(event);
         Projects.dump(projects);
     }
 
     function addTask(event) {
         const { column, task } = event.detail;
         columns[column].tasks = [task, ...columns[column].tasks];
-
-        save();
     }
 
     let selection;
@@ -42,7 +41,6 @@
         }
         
         selection = null;
-        save();
     }
 
     function removeTask(event) {
@@ -50,7 +48,6 @@
         columns[column].tasks = columns[column].tasks.filter(t => t._id !== id);
 
         selection = null;
-        save();
     }
 
     function closeTray(event) {
@@ -64,14 +61,14 @@
             {id} 
             {...column}
             on:taskSelected={selectTask}
-            on:taskAdded={addTask} />
+            on:taskAdded={(event) => save(event, addTask)} />
     {/each}
 </div>
 {#if selection}
     <TaskTray
         on:trayClosed={closeTray}
-        on:taskUpdated={updateTask}
-        on:taskRemoved={removeTask}
+        on:taskUpdated={(event) => save(event, updateTask)}
+        on:taskRemoved={(event) => save(event, removeTask)}
         {...selection}
         {columns} />
 {/if}
