@@ -55,8 +55,8 @@
         </select>
     </div>
     <div class="flex flex-row space-x-3">
-        <Button on:click={save} class="flex-1 bg-black text-white">Save</Button>
-        <Button on:click={remove} class="flex-1 bg-red-600 text-white">Delete</Button>
-        <Button on:click={close} class="flex-1 bg-yellow-300 text-black">Cancel</Button>
+        <Button on:click={save} color="green" class="flex-1">Save</Button>
+        <Button on:click={close} color="yellow" class="flex-1">Cancel</Button>
+        <Button on:click={remove} color="red" class="flex-1">Delete</Button>
     </div>
 </aside>
