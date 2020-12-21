@@ -52,7 +52,7 @@
     }
 </script>
 
-<button on:click={download} class="h-16 w-16 rounded-full shadow-md fixed bottom-8 right-8 z-10 bg-white box-border border-2 border-black">
+<button on:click={download} class="h-12 w-12 rounded-full shadow-md fixed bottom-8 right-8 z-10 bg-black text-white">
     ...
 </button>
 <div class="h-screen flex flex-row">
