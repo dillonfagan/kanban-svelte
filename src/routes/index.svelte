@@ -43,9 +43,9 @@
 </script>
 
 <div class="h-screen flex flex-row">
-    {#each columns as column, i}
+    {#each columns as column, id}
         <Column 
-            id={i} 
+            {id} 
             {...column}
             on:taskSelected={selectTask}
             on:taskAdded={addTask} />
