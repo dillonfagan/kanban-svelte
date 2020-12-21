@@ -14,6 +14,7 @@
 
     function save(event, callback) {
         callback(event);
+        deselectTask(event);
         Projects.dump(projects);
     }
 
@@ -25,6 +26,10 @@
     let selection;
     function selectTask(event) {
         selection = event.detail;
+    }
+
+    function deselectTask(event) {
+        selection = null;
     }
 
     function updateTask(event) {
@@ -39,19 +44,11 @@
             const index = columns[column].tasks.findIndex(t => t._id === task._id);
             columns[column].tasks[index] = task;
         }
-        
-        selection = null;
     }
 
     function removeTask(event) {
         const { column, id } = event.detail;
         columns[column].tasks = columns[column].tasks.filter(t => t._id !== id);
-
-        selection = null;
-    }
-
-    function closeTray(event) {
-        selection = null;
     }
 </script>
 
@@ -66,7 +63,7 @@
 </div>
 {#if selection}
     <TaskTray
-        on:trayClosed={closeTray}
+        on:trayClosed={deselectTask}
         on:taskUpdated={(event) => save(event, updateTask)}
         on:taskRemoved={(event) => save(event, removeTask)}
         {...selection}
