@@ -8,6 +8,11 @@
     const dispatch = createEventDispatcher();
 
     function save() {
+        if (!task.title) {
+            alert("A task must have a title.");
+            return;
+        }
+
         dispatch('taskUpdated', {
             column: column,
             task: task
