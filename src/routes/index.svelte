@@ -45,6 +45,14 @@
         save();
     }
 
+    function removeTask(event) {
+        const { column, id } = event.detail;
+        columns[column].tasks = columns[column].tasks.filter(t => t._id !== id);
+
+        selection = null;
+        save();
+    }
+
     function closeTray(event) {
         selection = null;
     }
@@ -63,6 +71,7 @@
     <TaskTray
         on:trayClosed={closeTray}
         on:taskUpdated={updateTask}
+        on:taskRemoved={removeTask}
         {...selection}
         {columns} />
 {/if}

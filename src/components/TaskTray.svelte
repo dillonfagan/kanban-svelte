@@ -24,6 +24,13 @@
         });
     }
 
+    function remove() {
+        dispatch('taskRemoved', {
+            column: column,
+            id: task._id
+        })
+    }
+
     function close() {
         dispatch('trayClosed', null);
     }
@@ -48,6 +55,7 @@
     </div>
     <div class="flex flex-row space-x-3">
         <button on:click={save} class="bg-black text-white">Save</button>
+        <button on:click={remove} class="bg-red-600 text-white">Delete</button>
         <button on:click={close} class="bg-yellow-300">Cancel</button>
     </div>
 </aside>
