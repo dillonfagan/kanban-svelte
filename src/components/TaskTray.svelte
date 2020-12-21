@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import Button from "$components/Button.svelte";
+    import { truncate } from "$library/truncate";
 
     export let columns;
     export let column;
@@ -9,7 +10,7 @@
     let taskTitle = task.title;
 
     let truncatedTitle;
-    $: truncatedTitle = taskTitle.length > 33 ? taskTitle.substring(0, 33) + "..." : taskTitle;
+    $: truncatedTitle = truncate(taskTitle, 36);
 
     const dispatch = createEventDispatcher();
 
