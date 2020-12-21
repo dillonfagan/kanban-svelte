@@ -50,8 +50,8 @@
                     class="rounded p-2"
                     placeholder="Give it a title..." />
                 <div class="flex flex-row space-x-3">
-                    <Button class="flex-1 bg-green-500 text-black" on:click={add}>Add</Button>
-                    <Button class="flex-1 bg-yellow-300 text-black" on:click={cancel}>Cancel</Button>
+                    <Button color="green" class="flex-1" on:click={add}>Add</Button>
+                    <Button color="yellow" class="flex-1" on:click={cancel}>Cancel</Button>
                 </div>
             </div>
         {/if}
