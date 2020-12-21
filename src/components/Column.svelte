@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import { v4 as uuid } from "uuid";
     import Task from "$components/Task.svelte";
 
     export let id;
@@ -19,7 +20,10 @@
     function add() {
         addingTask = false;
 
-        const task = { title: newTaskTitle };
+        const task = {
+            _id: uuid(),
+            title: newTaskTitle
+        };
 
         dispath('taskAdded', {
             column: id,
