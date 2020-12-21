@@ -20,7 +20,7 @@
 </script>
 
 <aside class="h-screen w-96 p-4 flex flex-col space-y-4 fixed top-0 right-0 bg-gray-400">
-    <div class="font-bold text-xl">{task.title}</div>
+    <div class="font-bold text-xl">{task.title || "Task"}</div>
     <div class="flex flex-col space-y-1">
         <label for="title" class="text-sm">Title</label>
         <input
