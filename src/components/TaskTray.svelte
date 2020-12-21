@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import Button from "$components/Button.svelte";
 
     export let columns;
     export let column;
@@ -54,16 +55,8 @@
         </select>
     </div>
     <div class="flex flex-row space-x-3">
-        <button on:click={save} class="bg-black text-white">Save</button>
-        <button on:click={remove} class="bg-red-600 text-white">Delete</button>
-        <button on:click={close} class="bg-yellow-300">Cancel</button>
+        <Button on:click={save} class="flex-1 bg-black text-white">Save</Button>
+        <Button on:click={remove} class="flex-1 bg-red-600 text-white">Delete</Button>
+        <Button on:click={close} class="flex-1 bg-yellow-300 text-black">Cancel</Button>
     </div>
 </aside>
-
-<style>
-    button {
-        @apply flex-1;
-        @apply rounded;
-        @apply p-2;
-    }
-</style>
