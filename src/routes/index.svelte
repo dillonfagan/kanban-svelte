@@ -30,8 +30,16 @@
 
     function updateTask(event) {
         const { column, task } = event.detail;
-        const index = columns[column].tasks.findIndex(t => t._id === task._id);
-        columns[column].tasks[index] = task;
+
+        if (column !== selection.column) {
+            const filtered = columns[selection.column].tasks.filter(t => t._id !== task._id);
+            columns[selection.column].tasks = filtered;
+
+            columns[column].tasks = [...columns[column].tasks, task];
+        } else {
+            const index = columns[column].tasks.findIndex(t => t._id === task._id);
+            columns[column].tasks[index] = task;
+        }
         
         selection = null;
         save();
@@ -55,6 +63,6 @@
     <TaskTray
         on:trayClosed={closeTray}
         on:taskUpdated={updateTask}
-        {selection}
+        {...selection}
         {columns} />
 {/if}
