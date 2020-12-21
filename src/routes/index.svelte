@@ -3,8 +3,7 @@
     import Projects from "./_data/projects";
     import Column from "$components/Column.svelte";
     import TaskTray from "../components/TaskTray.svelte";
-import Task from "../components/Task.svelte";
-
+    
     let projects;
     let columns = [];
 
