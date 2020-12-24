@@ -14,8 +14,6 @@
     }
 
     function drag() {
-        console.log('Dragging...');
-
         setTimeout(() => {
             this.style.display = 'none';
         }, 0);
@@ -27,8 +25,6 @@
     }
 
     function drop(event) {
-        console.log('Dropped.');
-        
         setTimeout(() => {
             this.style.display = 'block';
         }, 0);
