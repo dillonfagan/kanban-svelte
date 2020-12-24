@@ -19,6 +19,11 @@
         setTimeout(() => {
             this.style.display = 'none';
         }, 0);
+
+        dispatch('taskDragged', {
+            column: column,
+            task: task
+        });
     }
 
     function drop(event) {

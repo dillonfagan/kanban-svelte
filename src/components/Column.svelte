@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { v4 as uuid } from "uuid";
+    import { drag } from "$data/drag";
     import Task from "$components/Task.svelte";
     import Button from "$components/Button.svelte";
 
@@ -36,8 +37,12 @@
         addingTask = false;
     }
 
-    function dragover(event) {
-        event.preventDefault();
+    function drop(event) {
+        dispatch('taskDropped', {
+            column: id,
+            previousColumn: $drag.column,
+            task: $drag.task
+        });
     }
 </script>
 
@@ -46,7 +51,11 @@
         <div>{title} ({tasks.length})</div>
         <button on:click={addTask}>+</button>
     </div>
-    <div on:dragover={dragover} class="px-4 flex flex-col space-y-3">
+    <div
+        on:drop={drop}
+        on:dragenter|preventDefault={() => {}} 
+        on:dragover|preventDefault={() => {}}
+        class="px-4 h-full flex flex-col space-y-3">
         {#if addingTask}
             <div class="flex flex-col space-y-3">
                 <input 
@@ -60,7 +69,7 @@
             </div>
         {/if}
         {#each tasks as task}
-            <Task on:taskSelected on:taskDropped column={id} {task} />
+            <Task on:taskSelected on:taskDragged column={id} {task} />
         {/each}
     </div>
 </div>
