@@ -1,9 +1,8 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import { v4 as uuid } from "uuid";
     import { drag } from "$data/drag";
+    import TaskAdder from "$components/TaskAdder.svelte";
     import Task from "$components/Task.svelte";
-    import Button from "$components/Button.svelte";
 
     export let id;
     export let title;
@@ -12,21 +11,14 @@
     const dispatch = createEventDispatcher();
 
     let addingTask = false;
-    let newTaskTitle;
 
     function addTask() {
-        newTaskTitle = "";
         addingTask = true;
     }
 
-    function add() {
+    function add(event) {
         addingTask = false;
-
-        const task = {
-            _id: uuid(),
-            title: newTaskTitle
-        };
-
+        const { task } = event.detail;
         dispatch('taskAdded', {
             column: id,
             task: task
@@ -59,16 +51,7 @@
         on:dragover|preventDefault={() => {}}
         class="px-4 h-full flex flex-col space-y-3">
         {#if addingTask}
-            <div class="flex flex-col space-y-3">
-                <input 
-                    bind:value={newTaskTitle} 
-                    class="rounded p-2"
-                    placeholder="Give it a title..." />
-                <div class="flex flex-row space-x-3">
-                    <Button color="green" class="flex-1" on:click={add}>Add</Button>
-                    <Button color="yellow" class="flex-1" on:click={cancel}>Cancel</Button>
-                </div>
-            </div>
+            <TaskAdder on:add={add} on:cancel={cancel} />
         {/if}
         {#each tasks as task}
             <Task on:taskSelected column={id} {task} />
