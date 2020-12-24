@@ -15,10 +15,24 @@
 
     function drag() {
         console.log('Dragging...');
+
+        setTimeout(() => {
+            this.style.display = 'none';
+        }, 0);
     }
 
-    function drop() {
+    function drop(event) {
         console.log('Dropped.');
+        
+        setTimeout(() => {
+            this.style.display = 'block';
+        }, 0);
+
+        dispatch('taskDropped', {
+            column: column,
+            task: task,
+            dropEvent: event
+        });
     }
 </script>
 

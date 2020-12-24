@@ -35,6 +35,10 @@
     function cancel() {
         addingTask = false;
     }
+
+    function dragover(event) {
+        event.preventDefault();
+    }
 </script>
 
 <div class="w-64 h-full bg-gray-100">
@@ -42,7 +46,7 @@
         <div>{title} ({tasks.length})</div>
         <button on:click={addTask}>+</button>
     </div>
-    <div class="px-4 flex flex-col space-y-3">
+    <div on:dragover={dragover} class="px-4 flex flex-col space-y-3">
         {#if addingTask}
             <div class="flex flex-col space-y-3">
                 <input 
@@ -56,7 +60,7 @@
             </div>
         {/if}
         {#each tasks as task}
-            <Task on:taskSelected column={id} {task} />
+            <Task on:taskSelected on:taskDropped column={id} {task} />
         {/each}
     </div>
 </div>
