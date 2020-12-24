@@ -1,7 +1,6 @@
 <script>
     import { onMount } from "svelte";
     import Projects from "$data/projects";
-    import { drag } from "$data/drag";
     import Column from "$components/Column.svelte";
     import TaskTray from "$components/TaskTray.svelte";
     import DownloadButton from "$components/DownloadButton.svelte";
@@ -48,12 +47,7 @@
         columns[column].tasks = columns[column].tasks.filter(t => t._id !== id);
     }
 
-    function followTask(event) {
-        $drag = event.detail;
-    }
-
     function moveTask(event) {
-        $drag = {};
         const { column, previousColumn, task } = event.detail;
 
         columns[previousColumn].tasks = columns[previousColumn].tasks.filter(t => t._id !== task._id);
@@ -75,7 +69,6 @@
             {...column}
             on:taskSelected={selectTask}
             on:taskAdded={(event) => save(event, addTask)}
-            on:taskDragged={followTask}
             on:taskDropped={(event) => save(event, moveTask)} />
     {/each}
 </div>

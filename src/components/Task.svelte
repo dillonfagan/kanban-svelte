@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import { drag } from "$data/drag";
 
     export let column;
     export let task;
@@ -13,15 +14,15 @@
         });
     }
 
-    function drag() {
+    function follow() {
         setTimeout(() => {
             this.style.display = 'none';
         }, 0);
 
-        dispatch('taskDragged', {
+        $drag = {
             column: column,
             task: task
-        });
+        };
     }
 
     function drop(event) {
@@ -34,7 +35,7 @@
 <div
     draggable="true"
     on:click={select}
-    on:dragstart={drag}
+    on:dragstart={follow}
     on:dragend={drop}
     class="bg-white rounded box-border border-2 border-gray-200 hover:border-black text-gray-600 hover:text-black hover:shadow p-2 select-none cursor-move">
     <div class="font-bold">{task.title}</div>

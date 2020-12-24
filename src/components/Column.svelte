@@ -43,6 +43,8 @@
             previousColumn: $drag.column,
             task: $drag.task
         });
+
+        $drag = {};
     }
 </script>
 
@@ -69,7 +71,7 @@
             </div>
         {/if}
         {#each tasks as task}
-            <Task on:taskSelected on:taskDragged column={id} {task} />
+            <Task on:taskSelected column={id} {task} />
         {/each}
     </div>
 </div>
