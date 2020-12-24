@@ -28,12 +28,6 @@
         setTimeout(() => {
             this.style.display = 'block';
         }, 0);
-
-        dispatch('taskDropped', {
-            column: column,
-            task: task,
-            dropEvent: event
-        });
     }
 </script>
 
