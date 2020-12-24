@@ -12,10 +12,6 @@
 
     let addingTask = false;
 
-    function addTask() {
-        addingTask = true;
-    }
-
     function add(event) {
         addingTask = false;
         const { task } = event.detail;
@@ -23,10 +19,6 @@
             column: id,
             task: task
         });
-    }
-
-    function cancel() {
-        addingTask = false;
     }
 
     function drop(event) {
@@ -43,7 +35,7 @@
 <div class="w-64 h-full bg-gray-100">
     <div class="p-4 flex flex-row justify-between font-bold">
         <div>{title} ({tasks.length})</div>
-        <button on:click={addTask}>+</button>
+        <button on:click={() => addingTask = true}>+</button>
     </div>
     <div
         on:drop={drop}
@@ -51,7 +43,7 @@
         on:dragover|preventDefault={() => {}}
         class="px-4 h-full flex flex-col space-y-3">
         {#if addingTask}
-            <TaskAdder on:add={add} on:cancel={cancel} />
+            <TaskAdder on:add={add} on:cancel={() => addingTask = false} />
         {/if}
         {#each tasks as task}
             <Task on:taskSelected column={id} {task} />
