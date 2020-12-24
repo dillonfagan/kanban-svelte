@@ -53,6 +53,7 @@
     }
 
     function moveTask(event) {
+        $drag = {};
         const { column, previousColumn, task } = event.detail;
 
         columns[previousColumn].tasks = columns[previousColumn].tasks.filter(t => t._id !== task._id);
