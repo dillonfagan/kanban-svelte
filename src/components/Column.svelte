@@ -32,7 +32,7 @@
     }
 </script>
 
-<div class="w-64 h-full bg-gray-100">
+<div class="w-64 h-full bg-gray-100 overflow-hidden">
     <div class="p-4 flex flex-row justify-between font-bold">
         <div>{title} ({tasks.length})</div>
         <button on:click={() => addingTask = true}>+</button>
@@ -41,7 +41,7 @@
         on:drop={drop}
         on:dragenter|preventDefault={() => {}} 
         on:dragover|preventDefault={() => {}}
-        class="px-4 h-full flex flex-col space-y-3">
+        class="h-full px-4 flex flex-col space-y-3">
         {#if addingTask}
             <TaskAdder on:add={add} on:cancel={() => addingTask = false} />
         {/if}
